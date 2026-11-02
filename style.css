@@ -2,3 +2,6 @@
 
 /* English biographies follow the established gold typography. */
 .biography{padding:16px 20px}.biography p{color:var(--pale);font-size:15px;line-height:1.85}.biography .eyebrow{color:var(--gold)}.sheet{border:0}.profile{gap:28px}.biography h3{margin-top:12px}.brand img{height:auto}@media(max-width:700px){.biography{padding:12px 10px}.biography p{font-size:14px;line-height:1.9}}
+
+/* Match the spacing above and below the main artwork. */
+#main-art > .section-title{margin-bottom:48px}
