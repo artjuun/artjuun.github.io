@@ -42,3 +42,37 @@ for(const event of ['wheel','touchstart'])window.addEventListener(event,()=>{req
 window.addEventListener('resize',updateNav);
 window.addEventListener('load',updateNav);
 selectSection(location.hash.slice(1));updateNav();
+
+// Manual dragon carousel: buttons, arrow keys, and horizontal touch gestures.
+const dragonCarousel=document.querySelector('.dragon-carousel');
+const dragonSlides=[...document.querySelectorAll('.dragon-slide')];
+const dragonButtons=[...document.querySelectorAll('[data-dragon]')];
+let dragonIndex=0;
+function showDragon(index){
+ const next=(index+dragonSlides.length)%dragonSlides.length;
+ const direction=index>dragonIndex?'40px':'-40px';
+ dragonSlides.forEach((slide,i)=>{slide.hidden=i!==next;slide.classList.remove('is-entering');});
+ const slide=dragonSlides[next];
+ slide.style.setProperty('--slide-direction',direction);
+ void slide.offsetWidth;slide.classList.add('is-entering');
+ dragonButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===next)));
+ dragonIndex=next;
+ document.querySelector('.dragon-status').textContent=`${next+1} / ${dragonSlides.length} · ${dragonButtons[next].textContent}`;
+}
+dragonButtons.forEach((button,i)=>button.addEventListener('click',()=>showDragon(i)));
+document.querySelector('.dragon-prev').addEventListener('click',()=>showDragon(dragonIndex-1));
+document.querySelector('.dragon-next').addEventListener('click',()=>showDragon(dragonIndex+1));
+dragonCarousel.addEventListener('keydown',event=>{
+ if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();showDragon(dragonIndex+(event.key==='ArrowRight'?1:-1));}
+});
+let dragonTouch=null, suppressDragonClick=false;
+const dragonSurface=document.querySelector('.dragon-slides');
+dragonSurface.addEventListener('touchstart',event=>{suppressDragonClick=false;dragonTouch=event.touches.length===1?{x:event.touches[0].clientX,y:event.touches[0].clientY}:null;},{passive:true});
+dragonSurface.addEventListener('touchend',event=>{
+ if(!dragonTouch)return;
+ const dx=event.changedTouches[0].clientX-dragonTouch.x,dy=event.changedTouches[0].clientY-dragonTouch.y;
+ dragonTouch=null;
+ if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){suppressDragonClick=true;showDragon(dragonIndex+(dx<0?1:-1));}
+},{passive:true});
+dragonSurface.addEventListener('touchcancel',()=>{dragonTouch=null;},{passive:true});
+dragonSurface.addEventListener('click',event=>{if(suppressDragonClick){event.preventDefault();event.stopImmediatePropagation();suppressDragonClick=false;}},true);
