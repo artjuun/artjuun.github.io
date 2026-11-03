@@ -13,3 +13,17 @@
 
 /* Ancient dragons and the creatures of Valen. */
 .dragon-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin:32px 0 12px}.dragon-controls button{border:1px solid #574625;background:#000;color:var(--gold);padding:10px 14px;cursor:pointer}.dragon-selectors{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.dragon-selectors button{font:14px Georgia,serif}.dragon-selectors button[aria-pressed="true"]{background:#241c0e;color:var(--pale);border-color:var(--gold)}.dragon-controls button:hover{color:#fff;border-color:var(--pale)}.dragon-status{text-align:center;color:var(--gold);font:12px Georgia,serif;margin:0 0 24px}.dragon-slides{overflow:hidden;touch-action:pan-y}.dragon-slide[hidden]{display:none}.dragon-slide.is-entering{animation:dragon-enter .3s ease-out}.dragon-pending{min-height:clamp(380px,65vh,700px);display:grid;place-items:center}.creature-copy{text-align:center;color:#fff;padding:24px 12px}.creature-copy h3{font:400 clamp(28px,3.5vw,40px) Georgia,serif;color:var(--pale);margin:0 0 12px}.creature-copy h4{font:400 clamp(18px,2.4vw,26px) Georgia,serif;color:var(--gold);margin:0 0 20px}.creature-copy p{font-size:15px;line-height:1.85;margin:0 0 14px}.creature-copy p:last-child{margin-bottom:0}.dragon-slide>.creature-copy{max-width:960px;margin:0 auto;padding:32px 16px}.dragon-pending p{margin-top:28px}.creature-list{margin-top:64px;display:grid;gap:40px}.creature-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}.creature-row-reverse>.artwork{grid-column:2;grid-row:1}.creature-row-reverse>.creature-copy{grid-column:1;grid-row:1}@keyframes dragon-enter{from{opacity:.3;transform:translateX(var(--slide-direction,40px))}to{opacity:1;transform:translateX(0)}}@media(max-width:700px){.dragon-controls{gap:8px}.dragon-controls button{padding:9px 10px}.dragon-selectors{gap:6px}.dragon-selectors button{font-size:12px}.creature-row{grid-template-columns:1fr;gap:8px}.creature-row-reverse>.artwork,.creature-row-reverse>.creature-copy{grid-column:auto;grid-row:auto}.creature-copy{padding:20px 8px}.creature-copy p{font-size:14px}.creature-list{margin-top:40px;gap:32px}}@media(prefers-reduced-motion:reduce){.dragon-slide.is-entering{animation:none}}
+
+/* Halve Character vertical spacing while retaining horizontal spacing and readable text. */
+#character{margin-bottom:24px}
+#character>.section-title{margin-top:11px;margin-bottom:12px}
+#character .character{padding-bottom:24px;margin-bottom:24px}
+#character .character:last-child{margin-bottom:0}
+#character .profile{margin-bottom:11px;row-gap:14px}
+#character .biography{padding-top:8px;padding-bottom:8px}
+#character .biography p{margin-top:.5em;margin-bottom:.5em}
+#character .biography h3{margin-top:6px;margin-bottom:4px}
+#character .small-rule{margin-top:11px;margin-bottom:11px}
+.scene-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:32px}
+@media(max-width:700px){#character .character{padding-bottom:16px;margin-bottom:16px}#character .profile{row-gap:5px}#character .biography{padding-top:6px;padding-bottom:6px}}
+@media(max-width:600px){.scene-grid{grid-template-columns:1fr;gap:12px;margin-top:24px}}
