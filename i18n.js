@@ -21,7 +21,7 @@
   bind(`#${id} .biography h3`,names[id]);bind(`#${id} .eyebrow`,roles[id]);
   bind(`#${id} .biography p:not(.eyebrow)`,biographies[id]);
  }
- bind('#dragon-0 h3','카가리스');bind('#dragon-0 h4','고대 드래곤');
+ bind('#dragon-0 h3','카가리스');bind('#dragon-0 h4','고대 레드 드래곤');
  bind('#dragon-0 .creature-copy p',[
  '인간의 역사가 시작되기 아득한 옛날, 태초의 불길 속에서 깨어난 고룡.',
  '용암이 대륙을 가로지르고 화산재가 하늘을 뒤덮던 태고의 시대, 고대 종족 엘다르와 맹약을 맺어 그들의 영토를 수호했습니다.',
