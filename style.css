@@ -5,3 +5,6 @@
 
 /* Match the spacing above and below the main artwork. */
 #main-art > .section-title{margin-bottom:48px}
+
+/* World map and interactive national banners. */
+.world-map{max-width:700px;margin:40px auto 0}.map-instruction{text-align:center;color:var(--gold);font:14px Georgia,serif;margin:32px 0 24px}.nation-flags{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:18px;padding:0 0 28px}.nation-flag{display:flex;flex-direction:column;align-items:center;gap:12px;background:none;border:0;padding:6px 0;color:var(--pale);cursor:pointer;min-width:0;transition:transform .2s}.nation-flag img{width:100%;height:auto;display:block}.nation-flag:hover{transform:translateY(-5px)}.flag-caption{font:11px Georgia,serif;text-align:center;line-height:1.5}.nation-flag[data-coming] .flag-caption{color:#a99b7b}#viewer-message{text-align:center;padding:24px;color:var(--pale)}#viewer-message h3{font:32px Georgia,serif}#viewer-message p{font-size:15px;line-height:1.8}.viewer-stage [hidden]{display:none}#zoom-toggle[hidden]{display:none}@media(max-width:700px){.nation-flags{grid-template-columns:repeat(5,minmax(0,1fr));gap:20px 14px}.world-map{margin-top:28px}.flag-caption{font-size:10px}}

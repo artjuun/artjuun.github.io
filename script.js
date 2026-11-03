@@ -3,9 +3,14 @@ const picture=document.querySelector('#viewer-image');
 const stage=document.querySelector('.viewer-stage');
 const zoom=document.querySelector('#zoom-toggle');
 let opener;
-for(const button of document.querySelectorAll('[data-full]')) button.addEventListener('click',()=>{
- opener=button; picture.src=button.dataset.full; picture.alt=button.querySelector('img').alt;
- document.querySelector('#viewer-title').textContent=picture.alt;
+for(const button of document.querySelectorAll('[data-full], [data-coming]')) button.addEventListener('click',()=>{
+ opener=button;
+ const pending=button.hasAttribute('data-coming');
+ picture.hidden=pending;zoom.hidden=pending;
+ document.querySelector('#viewer-message').hidden=!pending;
+ if(!pending){picture.src=button.dataset.full;picture.alt=button.dataset.title||button.querySelector('img').alt;}
+ else picture.removeAttribute('src');
+ document.querySelector('#viewer-title').textContent=pending?'Coming soon':picture.alt;
  stage.classList.remove('is-zoomed');zoom.textContent='Original size';zoom.setAttribute('aria-pressed','false');
  viewer.showModal();document.body.classList.add('modal-open');stage.scrollTo(0,0);
 });
