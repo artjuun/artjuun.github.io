@@ -49,7 +49,7 @@
  bind('.map-instruction','국기를 선택하면 해당 국가의 병사들을 볼 수 있습니다.');
  bind('.zoom-hint', [...document.querySelectorAll('.zoom-hint')].map(e=>e.textContent.includes('concept')?'컨셉 시트 보기 ↗':'확대보기 ↗'));
  bind('.poster-caption strong','트레일러');bind('.poster-caption p','제작 중');
- bind('.skip','본문으로 이동');bind('footer a','맨 위로 ↑');
+ bind('.skip','본문으로 이동');bind('footer .back-to-top','맨 위로 ↑');
  bind('#viewer-close','닫기 ×');bind('#viewer-close','이미지 확대창 닫기','aria-label');
  bind('#image-viewer','이미지 확대보기','aria-label');bind('#viewer-message h3','업데이트 예정');
  bind('#viewer-message p','현재 제작 중인 병사들입니다. 추후 업데이트될 예정입니다.');
