@@ -18,6 +18,27 @@ viewer.addEventListener('pointerdown',e=>{backdropDown=e.target===viewer;});
 viewer.addEventListener('click',e=>{if(backdropDown&&e.target===viewer)viewer.close();backdropDown=false;});
 viewer.addEventListener('close',()=>{document.body.classList.remove('modal-open');opener?.focus({preventScroll:true});});
 const links=[...document.querySelectorAll('.topbar a')];
-const sections=links.map(a=>document.querySelector(a.hash));
-function updateNav(){let current=null;for(const s of sections)if(s.getBoundingClientRect().top<=130)current=s.id;for(const a of links){if(a.hash==='#'+current)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');}}
-window.addEventListener('scroll',updateNav,{passive:true});updateNav();
+const sections=links.map(a=>document.querySelector(a.hash)).filter(Boolean);
+let requestedSection=null;
+let navTimer;
+function activate(id){for(const a of links){if(a.hash==='#'+id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');}}
+function updateNav(){
+ if(requestedSection){activate(requestedSection);return;}
+ const threshold=(document.querySelector('.topbar')?.getBoundingClientRect().bottom||60)+40;
+ let current=null;
+ for(const s of sections)if(s.getBoundingClientRect().top<=threshold)current=s.id;
+ if(window.scrollY>0&&window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-3)current=sections.at(-1)?.id;
+ activate(current);
+}
+function finishNavigation(){requestedSection=null;updateNav();}
+function selectSection(id){
+ if(!sections.some(s=>s.id===id))return;
+ requestedSection=id;activate(id);clearTimeout(navTimer);navTimer=setTimeout(finishNavigation,1200);
+}
+for(const a of links)a.addEventListener('click',()=>selectSection(a.hash.slice(1)));
+window.addEventListener('hashchange',()=>selectSection(location.hash.slice(1)));
+window.addEventListener('scroll',()=>{updateNav();if(requestedSection){clearTimeout(navTimer);navTimer=setTimeout(finishNavigation,200);}},{passive:true});
+for(const event of ['wheel','touchstart'])window.addEventListener(event,()=>{requestedSection=null;clearTimeout(navTimer);updateNav();},{passive:true});
+window.addEventListener('resize',updateNav);
+window.addEventListener('load',updateNav);
+selectSection(location.hash.slice(1));updateNav();
