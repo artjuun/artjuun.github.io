@@ -27,3 +27,6 @@
 .scene-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:32px}
 @media(max-width:700px){#character .character{padding-bottom:16px;margin-bottom:16px}#character .profile{row-gap:5px}#character .biography{padding-top:6px;padding-bottom:6px}}
 @media(max-width:600px){.scene-grid{grid-template-columns:1fr;gap:12px;margin-top:24px}}
+
+/* Keep the language switch visible at the right of the fixed navigation. */
+.topbar{display:flex;align-items:center;justify-content:center;padding:0 16px;gap:18px}.topbar nav{margin:0;min-width:0;padding:0 8px}.topbar #language-toggle{flex-shrink:0;padding:7px 12px;border:1px solid var(--gold);background:#151108;color:var(--pale);cursor:pointer;font-size:12px;white-space:nowrap}html[lang="ko"] .biography h3{letter-spacing:.04em}html[lang="ko"] .creature-copy p{word-break:keep-all}html[lang="ko"] .creature-copy h3,html[lang="ko"] .biography h3{font-family:Georgia,'Batang',serif}@media(max-width:700px){.topbar{gap:6px;padding:0 8px}.topbar nav{flex:1;justify-content:flex-start}.topbar #language-toggle{padding:7px 9px}}

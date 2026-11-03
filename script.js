@@ -10,7 +10,7 @@ for(const button of document.querySelectorAll('[data-full], [data-coming]')) but
  if(!pending){picture.src=button.dataset.full;picture.alt=button.dataset.title||button.querySelector('img').alt;}
  else picture.removeAttribute('src');
  document.querySelector('#viewer-title').textContent=pending?'Coming soon':picture.alt;
- viewer.showModal();document.body.classList.add('modal-open');stage.scrollTo(0,0);
+ window.refreshViewerLanguage?.();viewer.showModal();document.body.classList.add('modal-open');stage.scrollTo(0,0);
 });
 document.querySelector('#viewer-close').addEventListener('click',()=>viewer.close());
 let backdropDown=false;
