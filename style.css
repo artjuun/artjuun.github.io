@@ -33,3 +33,6 @@
 
 /* Portfolio signature and contact details. */
 footer{align-items:flex-start;gap:24px;padding-top:16px}.footer-name{display:block;font-size:20px;color:var(--pale)}.contact-label{margin:20px 0 10px;font-size:14px;color:var(--gold)}.footer-contact address{display:flex;flex-direction:column;gap:10px;font:normal 13px/1.6 Arial,sans-serif;letter-spacing:0}.footer-contact a{overflow-wrap:anywhere}.footer-contact a:hover{text-decoration:underline;color:var(--pale)}.back-to-top{flex-shrink:0;padding-top:5px}@media(max-width:480px){footer{flex-direction:column;gap:24px}}
+
+/* Match Kagaris's subtitle to its name. */
+#dragon-0 .creature-copy h4{color:var(--pale)}
